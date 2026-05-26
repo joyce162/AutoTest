@@ -12,12 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class Request {
-//    烧烤鱿鱼
-//    金沙鸡翅
-//    干拔财鱼
-//    小炒时蔬
-//    韭菜鸡蛋
-//    牛肉丸冬瓜汤（要买嫩芹菜）
     static CloseableHttpClient httpClient = HttpClients.createDefault();
     public static String httpGet(String url){
         HttpGet httpGet = new HttpGet(url);
@@ -43,6 +37,7 @@ public class Request {
         String res = "";
         try {
             httpPost.setEntity(new StringEntity(body,"UTF-8"));
+            httpPost.addHeader("content-type","application/json");
             CloseableHttpResponse execute = httpClient.execute(httpPost);
             HttpEntity entity = execute.getEntity();
             res = EntityUtils.toString(entity);
